@@ -40,6 +40,7 @@ define sensu::check(
     high_flap_threshold => $high_flap_threshold,
     custom              => $custom,
     require             => File['/etc/sensu/conf.d/checks'],
+    before              => [ Service['sensu-client'], Service['sensu-api'], Service['sensu-server'], Service['sensu-dashboard'] ],
   }
 
 }
